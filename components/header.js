@@ -1,9 +1,12 @@
 import Image from "next/future/image"
 import Link from "next/link"
 import styles from "../styles/header.module.css"
-
+import { useRouter } from "next/router"
 
 export default function Header() {
+
+    const router = useRouter();
+
     return (
         <header className={styles.header}>
             <div className={`contenedor ${styles.barra}`}>
@@ -12,19 +15,27 @@ export default function Header() {
 
             <nav className={styles.navegation}>
                 <Link href="/">
-                    Home
+                    <a className={ router.pathname === '/' ? styles.active : ""}>
+                        Home
+                    </a>
                 </Link>
 
                 <Link href="/us">
-                    Us
+                    <a className={ router.pathname === '/Us' ? styles.active : ""}>
+                        Us
+                    </a>
                 </Link>
 
                 <Link href="/blog">
-                    Blog
+                    <a className={ router.pathname === '/Blog' ? styles.active : ""}>
+                        Blog
+                    </a>
                 </Link>
 
                 <Link href="/store">
-                    Store
+                    <a className={ router.pathname === '/Store' ? styles.active : ""}>
+                        Store
+                    </a>
                 </Link>
             </nav>
         </header>
